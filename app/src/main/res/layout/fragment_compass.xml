@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".CompassFragment">
+
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#fff">
+
+        <TextView
+            android:id="@+id/tvHeading"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="40dp"
+            android:layout_marginTop="20dp"
+            android:text="Heading: 0.0" />
+        <TextView
+            android:id="@+id/qiblaDirection"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="40dp"
+            android:layout_marginTop="20dp"
+            android:text="TextView"
+            android:layout_below="@id/tvHeading"/>
+        <TextView
+            android:id="@+id/compassAccuracy"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="152dp"
+            android:text="Compass Accuracy: " />
+        <ImageView
+            android:id="@+id/imageViewCompass"
+            android:layout_width="286dp"
+            android:layout_height="311dp"
+            android:layout_below="@+id/tvHeading"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="162dp"
+            android:src="@drawable/comp" />
+
+    </RelativeLayout>
+
+</FrameLayout>

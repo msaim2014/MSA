@@ -7,6 +7,8 @@
     tools:context=".HomeFragment"
     android:background="#fcfcfc">
 
+    <!--The code for the svg icons need to have viewbox numbers in integers and not doubles-->
+
     <android.support.design.widget.CoordinatorLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -24,7 +26,7 @@
                 app:title="MSA at FAU"
                 app:expandedTitleMarginStart="48dp"
                 app:expandedTitleMarginEnd="64dp"
-                android:background="@drawable/qibla">
+                android:background="@drawable/qibla_section">
                 <android.support.v7.widget.Toolbar
                     android:id="@+id/toolBarId"
                     android:popupTheme="@style/ThemeOverlay.AppCompat.Light"
@@ -50,6 +52,7 @@
                 android:gravity="center"
                 android:id="@+id/ll">
 
+                <!--First card row-->
                 <LinearLayout
                     android:clipToPadding="false"
                     android:gravity="center"
@@ -80,7 +83,8 @@
                                 android:layout_height="wrap_content"
                                 android:textStyle="bold"
                                 android:layout_marginTop="10dp"
-                                android:text="Prayer" />
+                                android:text="Prayer"
+                                android:fontFamily="@font/oneday"/>
                             <View
                                 android:layout_width="match_parent"
                                 android:layout_height="1dp"
@@ -91,6 +95,7 @@
                                 android:layout_height="wrap_content"
                                 android:gravity="center"
                                 android:text="Check Current Prayer Times"
+                                android:fontFamily="@font/google"
                                 android:padding="5dp"
                                 android:textColor="@android:color/darker_gray"/>
                         </LinearLayout>
@@ -119,7 +124,8 @@
                                 android:layout_height="wrap_content"
                                 android:textStyle="bold"
                                 android:layout_marginTop="10dp"
-                                android:text="Compass" />
+                                android:text="Compass"
+                                android:fontFamily="@font/oneday"/>
                             <View
                                 android:layout_width="match_parent"
                                 android:layout_height="1dp"
@@ -130,12 +136,14 @@
                                 android:layout_height="wrap_content"
                                 android:gravity="center"
                                 android:text="Check Qibla Direction In Your Location"
+                                android:fontFamily="@font/google"
                                 android:padding="5dp"
                                 android:textColor="@android:color/darker_gray"/>
                         </LinearLayout>
                     </android.support.v7.widget.CardView>
                 </LinearLayout>
 
+                <!--Second card row-->
                 <LinearLayout
                     android:clipToPadding="false"
                     android:gravity="center"
@@ -165,7 +173,8 @@
                                 android:layout_height="wrap_content"
                                 android:textStyle="bold"
                                 android:layout_marginTop="10dp"
-                                android:text="Events" />
+                                android:text="Events"
+                                android:fontFamily="@font/oneday"/>
                             <View
                                 android:layout_width="match_parent"
                                 android:layout_height="1dp"
@@ -176,11 +185,61 @@
                                 android:layout_height="wrap_content"
                                 android:gravity="center"
                                 android:text="Check MSA Events"
+                                android:fontFamily="@font/google"
                                 android:padding="5dp"
                                 android:textColor="@android:color/darker_gray"/>
                         </LinearLayout>
                     </android.support.v7.widget.CardView>
 
+                    <android.support.v7.widget.CardView
+                        android:foreground="?android:attr/selectableItemBackground"
+                        android:clickable="true"
+                        android:id="@+id/email_card"
+                        android:layout_width="160dp"
+                        android:layout_height="190dp"
+                        android:layout_margin="10dp">
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:orientation="vertical"
+                            android:gravity="center">
+                            <ImageView
+                                android:layout_width="64dp"
+                                android:layout_height="64dp"
+                                android:background="@drawable/circle"
+                                android:src="@drawable/ic_send"
+                                android:padding="10dp"/>
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textStyle="bold"
+                                android:layout_marginTop="10dp"
+                                android:text="Send"
+                                android:fontFamily="@font/oneday"/>
+                            <View
+                                android:layout_width="match_parent"
+                                android:layout_height="1dp"
+                                android:background="@color/lightGray"
+                                android:layout_margin="10dp"/>
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:gravity="center"
+                                android:text="Halaqa and Suggestion Box"
+                                android:fontFamily="@font/google"
+                                android:padding="5dp"
+                                android:textColor="@android:color/darker_gray"/>
+                        </LinearLayout>
+                    </android.support.v7.widget.CardView>
+                </LinearLayout>
+
+                <!--Third card row-->
+                <LinearLayout
+                    android:clipToPadding="false"
+                    android:gravity="center"
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
                     <android.support.v7.widget.CardView
                         android:foreground="?android:attr/selectableItemBackground"
                         android:clickable="true"
@@ -204,7 +263,8 @@
                                 android:layout_height="wrap_content"
                                 android:textStyle="bold"
                                 android:layout_marginTop="10dp"
-                                android:text="Settings" />
+                                android:text="Settings"
+                                android:fontFamily="@font/oneday"/>
                             <View
                                 android:layout_width="match_parent"
                                 android:layout_height="1dp"
@@ -215,11 +275,13 @@
                                 android:layout_height="wrap_content"
                                 android:gravity="center"
                                 android:text="Adjust Location Settings"
+                                android:fontFamily="@font/google"
                                 android:padding="5dp"
                                 android:textColor="@android:color/darker_gray"/>
                         </LinearLayout>
                     </android.support.v7.widget.CardView>
                 </LinearLayout>
+
             </LinearLayout>
         </android.support.v4.widget.NestedScrollView>
     </android.support.design.widget.CoordinatorLayout>

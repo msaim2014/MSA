@@ -2,11 +2,13 @@ package com.example.android.msa_at_fau_v3;
 
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -50,6 +52,10 @@ public class Compass2Fragment extends Fragment implements SensorEventListener{
     private float[] mGravity = new float[3];
     private float[] mGeomagnetic = new float[3];
 
+    public static final String TEXT = "text";
+    public static final String SHARED_PREFS="sharedPrefs";
+
+
     public Compass2Fragment() {
         // Required empty public constructor
     }
@@ -74,7 +80,9 @@ public class Compass2Fragment extends Fragment implements SensorEventListener{
         mPointer = (ImageView) view.findViewById(R.id.imageViewCompass2);
 
         qiblaDirection = (TextView) view.findViewById(R.id.qiblaDirection2);
-        fetchData process = new fetchData(compass);
+
+        String city_name = loadData();
+        fetchData process = new fetchData(compass, city_name);
         process.execute();
     }
 
@@ -195,4 +203,11 @@ public class Compass2Fragment extends Fragment implements SensorEventListener{
         // TODO Auto-generated method stub
     }
 
+    public String loadData(){
+        SharedPreferences mSharedPreferences = this.getActivity().getSharedPreferences(SHARED_PREFS, Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = mSharedPreferences.edit();
+
+        String name = mSharedPreferences.getString(TEXT, "");
+        return name;
+    }
 }

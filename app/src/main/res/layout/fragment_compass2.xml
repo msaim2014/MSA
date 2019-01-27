@@ -10,7 +10,18 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Compass"
+            android:padding="8dp"
+            android:textSize="24sp"
+            android:layout_gravity="center_horizontal"
+            android:fontFamily="@font/oneday"/>
+
         <LinearLayout
             xmlns:android="http://schemas.android.com/apk/res/android"
             android:layout_weight="1"
@@ -33,8 +44,9 @@
                     android:padding="5dp"
                     android:textColor="@color/black"
                     android:layout_gravity="center"
-                    android:textSize="14sp"
-                    android:text="Heading: 0.0" />
+                    android:textSize="18sp"
+                    android:text="Heading: 0.0"
+                    android:fontFamily="@font/google"/>
             </android.support.v7.widget.CardView>
 
             <android.support.v7.widget.CardView
@@ -51,9 +63,10 @@
                     android:layout_centerHorizontal="true"
                     android:text="TextView"
                     android:padding="5dp"
-                    android:textSize="14sp"
+                    android:textSize="18sp"
                     android:layout_gravity="center"
-                    android:textColor="@color/black"/>
+                    android:textColor="@color/black"
+                    android:fontFamily="@font/google"/>
             </android.support.v7.widget.CardView>
 
             <android.support.v7.widget.CardView
@@ -70,10 +83,11 @@
                     android:layout_alignParentTop="true"
                     android:layout_centerHorizontal="true"
                     android:padding="5dp"
-                    android:textSize="14sp"
+                    android:textSize="18sp"
                     android:layout_gravity="center"
                     android:textColor="@color/black"
-                    android:text="@string/compass_accuracy" />
+                    android:text="@string/compass_accuracy"
+                    android:fontFamily="@font/google"/>
             </android.support.v7.widget.CardView>
 
         </LinearLayout>

@@ -1,15 +1,18 @@
 package com.example.android.msa_at_fau_v3;
 
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.support.v7.app.AppCompatActivity;
-import android.text.method.LinkMovementMethod;
+import android.text.SpannableString;
+import android.text.Spanned;
+import android.text.style.UnderlineSpan;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.TextView;
 
 import org.w3c.dom.Text;
@@ -28,6 +31,9 @@ public class TimesFragment extends Fragment {
     public static TextView asr;
     public static TextView maghrib;
     public static TextView isha;
+
+    public static final String TEXT = "text";
+    public static final String SHARED_PREFS="sharedPrefs";
 
     public TimesFragment() {
         // Required empty public constructor
@@ -53,8 +59,16 @@ public class TimesFragment extends Fragment {
         maghrib = (TextView) view.findViewById(R.id.maghrib);
         isha = (TextView) view.findViewById(R.id.isha);
 
-
-        fetchData process=new fetchData(status);
+        String city_name = loadData();
+        fetchData process = new fetchData(status, city_name);
         process.execute();
+    }
+
+    public String loadData(){
+        SharedPreferences mSharedPreferences = this.getActivity().getSharedPreferences(SHARED_PREFS, Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = mSharedPreferences.edit();
+
+        String name = mSharedPreferences.getString(TEXT, "Default");
+        return name;
     }
 }

@@ -19,7 +19,10 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 import android.content.Context;
@@ -65,22 +68,24 @@ public class FetchCalendarData extends AsyncTask<Void, Void, Void> {
                     singleEvent.title = "";
                 }
                 try {
-                    singleEvent.description = items.getJSONObject(i).getString("description");
+                    singleEvent.description = "Description: " + items.getJSONObject(i).getString("description");
                 } catch (Exception e) {
                     singleEvent.description = "";
                 }
                 try {
-                    singleEvent.location = items.getJSONObject(i).getString("location");
+                    singleEvent.location = "Location: " + items.getJSONObject(i).getString("location");
                 } catch (Exception e) {
                     singleEvent.location = "";
                 }
                 try {
                     singleEvent.start = items.getJSONObject(i).getJSONObject("start").getString("dateTime");
+                    singleEvent.start = "Start: " + convertDate(singleEvent.start);
                 } catch (Exception e) {
                     singleEvent.start = "";
                 }
                 try {
                     singleEvent.end = items.getJSONObject(i).getJSONObject("end").getString("dateTime");
+                    singleEvent.end = "End: " + convertDate(singleEvent.end);
                 } catch (Exception e) {
                     singleEvent.end = "";
                 }
@@ -97,7 +102,6 @@ public class FetchCalendarData extends AsyncTask<Void, Void, Void> {
         return null;
     }
 
-
     @Override
     protected void onPostExecute(Void aVoid) {
         super.onPostExecute(aVoid);
@@ -107,6 +111,23 @@ public class FetchCalendarData extends AsyncTask<Void, Void, Void> {
         Gson gson = new Gson();
         String json = gson.toJson(allEvents);
         editor.putString("task list", json);
-        editor.apply();    }
+        editor.apply();
+    }
+
+    public String convertDate(String date){
+        String final_date="";
+
+        SimpleDateFormat original_format = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ssZ");
+        try {
+            //converting string to date format
+            Date converted_date = original_format.parse(date);
+            SimpleDateFormat new_format = new SimpleDateFormat("MMMM dd, yyyy hh:mm");
+            final_date = new_format.format(converted_date);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+
+        return final_date;
+    }
 
 }

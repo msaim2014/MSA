@@ -2,7 +2,9 @@ package com.example.android.msa_at_fau_v3;
 
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -41,6 +43,9 @@ public class CompassFragment extends Fragment implements SensorEventListener {
     public String accuracy;
     TextView compassAccuracy;
 
+    public static final String TEXT = "text";
+    public static final String SHARED_PREFS="sharedPrefs";
+
     public CompassFragment() {
         // Required empty public constructor
     }
@@ -69,7 +74,9 @@ public class CompassFragment extends Fragment implements SensorEventListener {
         Sensor mMagnetometer = mSensorManager.getDefaultSensor(Sensor.TYPE_MAGNETIC_FIELD);
 
         qiblaDirection = (TextView) view.findViewById(R.id.qiblaDirection);
-        fetchData process = new fetchData(status);
+
+        String city_name = loadData();
+        fetchData process = new fetchData(status, city_name);
         process.execute();
     }
 
@@ -146,5 +153,13 @@ public class CompassFragment extends Fragment implements SensorEventListener {
     @Override
     public void onAccuracyChanged(Sensor sensor, int accuracy) {
         //nothing needed
+    }
+
+    public String loadData(){
+        SharedPreferences mSharedPreferences = this.getActivity().getSharedPreferences(SHARED_PREFS, Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = mSharedPreferences.edit();
+
+        String name = mSharedPreferences.getString(TEXT, "");
+        return name;
     }
 }

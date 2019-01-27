@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".EmailFragment">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Send Message"
+            android:padding="8dp"
+            android:textSize="24sp"
+            android:layout_gravity="center_horizontal"
+            android:fontFamily="@font/oneday"/>
+
+        <EditText
+            android:id="@+id/recipient"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/google"
+            android:hint="Recipient Email Address"
+            android:inputType="textEmailAddress" />
+
+        <EditText
+            android:id="@+id/subject"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Subject"
+            android:inputType="textEmailSubject"
+            android:fontFamily="@font/google"/>
+
+        <EditText
+            android:id="@+id/email_content"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/google"
+            android:gravity="start"
+            android:hint="Enter message here ..."
+            android:inputType="text"
+            android:minHeight="150dp" />
+
+        <Button
+            android:id="@+id/send_email_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:textSize="14sp"
+            android:backgroundTint="@color/gold"
+            android:fontFamily="@font/google"
+            android:text="Send" />
+
+    </LinearLayout>
+
+</FrameLayout>
